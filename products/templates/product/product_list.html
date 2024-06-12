@@ -1,0 +1,11 @@
+{% extends "baseproduct.html" %}
+
+{% block content %}
+    <br>
+    <h1>list of items in the database<h1>
+
+    {% for instance in object_list %}
+        <p>{{ instance.id }} {{ instance.name }} </p>
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% extends "basearticle.html" %}
+{% block content %}
+    <h3>Article Title list</h3>
+    {% for instance in object_list %}
+        <p>{{ instance.id }}. <a href="{% url 'article:article_detail' instance.pk %}">{{ instance.title }}</a></p>
+    {% endfor %}
+{% endblock content %}

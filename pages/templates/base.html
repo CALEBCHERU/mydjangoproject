@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CALEB</title>
+    </head>
+    <body>
+        {% block content %}
+            <h1> hii CALEB1</h1>
+            <h1> hii CALEB2</h1>
+            <p>Replace me</p><br><br>
+
+            {{request.user}} <br>
+            {{name}}, {{Age}} ,{{University}}
+            <ul>{% for i in list %}
+                <li>{{forloop.counter}} - {{i}}</li>
+                {% endfor %}
+            </ul><br>
+
+            <il>{% for i in list%}
+                    {% if i == 20 %}
+                        <li>{{i|add:22}}<li>
+                    {%elif i == 987 %}
+                        <li>Hello Caleb<li>
+                    {%else%}
+                        <li>{{i}}<li>
+                    {%endif%}
+                {%endfor%}
+
+            </ol>
+        {% endblock %}
+
+        {% include "contact.html"%}
+
+        
+
+    </body>
+
+</html>

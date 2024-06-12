@@ -1,0 +1,16 @@
+
+{% extends "freecode.html" %}
+
+{% block content %}
+
+    <h1>Delete Form</h1>
+    <form action="" method="POST">{% csrf_token %}
+
+        <p>Are you sure you need to delete{{object.room_name}}</p>
+
+        <a href="{{request.META.HTTP_REFERER}}">Go BAck</a>
+
+        <input type="submit" value="delete">
+    </form>
+  
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "basearticle.html" %}
+
+{% block content %}
+    <h1>test list<h1>
+    {% for object in object_list %}
+        <p> {{ object.id}} {{ object.title }} <p>
+    {% endfor %}
+    <p> {{ objects.title }} <p>
+
+{% endblock content %}

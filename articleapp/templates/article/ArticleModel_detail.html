@@ -1,0 +1,10 @@
+{% extends "basearticle.html" %}
+    {% block content %}
+        <h2>Article Detail</h2>
+        <h3> 
+            {{object.title}} <br>
+            {{object.content}} <br>
+            {{object.active}} <br>
+            {{object.date}} <br>
+        </h3>
+    {% endblock content %}

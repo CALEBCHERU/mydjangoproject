@@ -1,0 +1,23 @@
+{% extends "BaseView_View.html" %}
+
+{% block content %}
+    <h1>Messages</h1>
+    <hr>
+
+    {% for message in messages %}
+        
+        <h1>{{message.user}}</h1>
+        <h2>{{message.room}}</h2>
+        <h2>{{message.body}}</h2>
+        
+        <h4>{{message.updated}}</h4>
+        <h4>{{message.created|timesince}}</h4>
+        <hr>
+    {% endfor %}
+    
+
+    {% if request.user.is_authenticated %}
+      
+    {% endif %}
+  
+{% endblock content %}

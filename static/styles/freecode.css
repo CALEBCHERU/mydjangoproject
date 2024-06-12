@@ -1,0 +1,73 @@
+* {
+    margin: 5px;
+}
+#title {
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(242, 242, 247);
+    box-shadow: 10px 10px 10px red;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.home-container {
+    margin-right: 200px;
+    margin-left: 200px;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: 
+        "nv bd nb";
+    gap: 10px;
+    box-shadow: 10px 10px 10px red;
+    border-color: rgb(8, 237, 8);
+    border-style: groove;
+}
+h1 {
+    color: red;
+}
+h4 {
+    color: rgb(21, 169, 21);
+}
+.navbar {
+    grid-area: nv;
+    background-color: rgb(53, 53, 55);
+    box-shadow: 10px 10px 10px red;
+    color: rgb(8, 234, 8);
+}
+.itemnav {
+    align-self: flex-start;
+    padding: 0;
+}
+.navbody {
+    grid-area: nb;
+    background-color: rgb(53, 53, 55);
+    box-shadow: 10px 10px 10px red;
+    color: rgb(8, 234, 8);
+    align-self: flex-start;
+    padding: 20px;
+    height: 300px;
+    width: 200px;
+}
+#linkitem {
+    text-decoration: none;
+    color: rgb(8, 234, 8);
+    font-size: 1.8rem;
+}
+#linkitem:hover {
+    color: rgb(19, 156, 19);
+}
+#search {
+    padding: 5px;
+    box-shadow: 10px 5px 5px red;
+    border-width: 5px;
+    border-color: rgb(8, 237, 8);
+    border-radius: 5px;
+}
+.main-content {
+    grid-area: bd;
+}
+.body {
+    grid-area: bd;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load  static   %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>freecode</title>
+        <link rel="stylesheet" media="screen" href="{% static 'styles/freecode.css' %}">
+    </head>
+    <body>
+            
+        <h1 id="title">Django Dynamic Website</h1>
+        <div class="home-container">
+            <div class="navbar">
+                <div class="itemnav">
+                    <h2><strong>Browse topic</strong></h2><hr>
+                    <div>
+                        <!-- <div>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li {% if message.error %} class="{{ message.error }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div> -->
+                    </div>
+                    <div>
+                        {% if request.user.is_authenticated %}
+                            <h1>User: {{request.user}}  </h1>
+                            <a id="linkitem" href="{% url 'logout_room' %}">LOGOUT</a>
+                        {% else %}
+                            <h1>{{request.user}}  </h1>
+                            <a id="linkitem" href="{% url 'login_room' %}">LOGIN</a>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <form method="GET" action="{%url 'home_room'%}">
+                            <input id="search" type="text" name="q" placeholder="Search Rooms..." />
+                        </form>
+                    </div>
+                    <div>
+                        <a id="linkitem" href="{% url 'home_room' %}">All</a>
+                    </div>
+                    {% for topic in topics %}
+                    <div>
+                        <a id="linkitem" href="{% url 'home_room' %}?q={{topic.name}}">{{ topic }} </a>
+                    </div>
+                    {% endfor %}
+                    <div>
+                        <a id="linkitem" href="{% url 'create_room' %}">Create Room</a>
+                    </div>
+                    <div>
+                        <a id="linkitem" href="{% url 'home_room' %}?q=messagesall ">Messages</a>
+                    </div>
+                    <hr>
+                    <br/>
+                    {% if q == 'messagesall' %}
+                    <div style="font-size: 1.5Rem;">
+                        Messages available {{Message_count}}
+                    </div>
+                    <form action="" method="post">{% csrf_token %}
+                        <input id="search" type="text" name="body" placeholder="write a message here..       ">
+                    </form>
+                    {% else %}
+                    <div style="font-size: 1.5Rem;">
+                        Rooms available {{room_count}} 
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="main-content">
+                {% if q == 'messagesall' %}
+                <div>
+                    <h1>Messages</h1>
+                    <hr>
+                    {% for message in messages %}
+                    <h1>{{message.user}}</h1>
+                    <h2>{{message.room}}</h2>
+                    <p>{{message.body}}</p>
+                    <h4>{{message.updated}}</h4>
+                    <h4>{{message.created|timesince}}</h4>
+                    <hr>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="body">
+                    {% for instance in object %}
+                        <h1>{{ instance.id }}. {{ instance.topic }}</h1>
+                        <p>{{ instance.host }}</p>
+                        <p>{{ instance.room_name }}</p>
+                        <p>{{ instance.description }}</p>
+                        <a href="{% url 'update_room' instance.id %}">Edit</a>
+                        <a href="{% url 'delete_room' instance.id %}">Delete</a>
+                        <hr>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="navbody">
+                <!-- nav2 -->
+                
+                <h1>Participants</h1>
+                {% for message in messages %}
+                <div>
+                    <h2> @{{message.user}}</h2>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

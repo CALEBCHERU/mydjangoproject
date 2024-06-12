@@ -1,0 +1,55 @@
+
+{% extends "BaseView_View.html" %}
+
+{% block content %}
+
+    {% if page == 'login' %}
+
+    
+        <div>
+            <h1>LOGIN</h1>
+            <form action="" method="POST">{% csrf_token %}
+
+
+                <div>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.error %} class="{{ message.error }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+
+                <label >Username:</label>
+                <input type="text" placeholder="Enter Username" name="username"> <br><br>
+
+                <label >Password:</label>
+                <input type="password"  placeholder="Enter Password" name="password"> <br><br>
+
+                <input type="submit" value="Login">
+            </form>
+            <P>Haven't signed up?</P>
+            <a href="{% url 'register_room'  %}">Sign Up</a>
+
+        </div>
+
+    {% else %}
+
+
+        <div>
+            <h1>Registration form</h1>
+            <form action="" method="POST">{% csrf_token %}
+
+                {{form.as_p}}
+        
+        
+                <input type="submit" value="Register">
+            </form>
+            <P>Already signed up?</P>
+            <a href="{% url 'login_room'  %}">Login</a>
+        </div>
+    {% endif %}
+  
+{% endblock content %}
